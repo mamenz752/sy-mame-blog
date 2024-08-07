@@ -18,7 +18,7 @@ const Header = () => {
         </div>
       </div>
       <nav className="my-8">
-        <ul className="py-2 flex items-center justify-around bg-black text-white tracking-widest">
+        <ul className="py-4 flex items-center justify-around bg-black text-white tracking-widest">
           <li>
             <Link href="/" className="hover:text-gray-300">
               ホーム

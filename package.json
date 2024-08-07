@@ -35,9 +35,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "yarn lint",
-      "yarn format",
-      "yarn lint:fix"
+      "eslint app/**/*.{ts,tsx} --fix",
+      "prettier --write '**/*.{ts,tsx}'"
     ]
   }
 }

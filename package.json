@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "lint:fix": "eslint **/*.{ts,tsx} --fix",
     "format": "prettier --write .",
     "prepare": "husky"
   },

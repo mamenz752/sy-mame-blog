@@ -1,14 +1,10 @@
+import { client } from '@/libs/client';
 import Link from 'next/link';
 import Image from 'next/image';
-import React, { FC } from 'react';
-import { client } from '@/libs/client';
+import React from 'react';
 
-type Props = {
-  id: string;
-};
-
-const BlogItem: FC<Props> = async (props: Props) => {
-  const data = await client.get({ endpoint: 'blog', contentId: props.id });
+const pages = async ({ params }: { params: { id: string } }) => {
+  const data = await client.get({ endpoint: 'blog', contentId: params.id });
 
   return (
     <li>
@@ -32,4 +28,4 @@ const BlogItem: FC<Props> = async (props: Props) => {
   );
 };
 
-export default BlogItem;
+export default pages;

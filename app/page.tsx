@@ -2,9 +2,7 @@ import { client } from '../libs/client';
 import BlogItem from './components/BlogItem';
 
 export default async function Home(): Promise<JSX.Element> {
-  const data = await client.getAllContentIds({ endpoint: 'blog' });
-  const articles = data;
-  console.log(data);
+  const articles = await client.getAllContentIds({ endpoint: 'blog' });
 
   return (
     <main className="py-8">

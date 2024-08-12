@@ -1,13 +1,33 @@
 import { client } from '@/libs/client';
 import Image from 'next/image';
-import React, { FC } from 'react';
+import React from 'react';
 import parse from 'html-react-parser';
 import dayjs from 'dayjs';
 import ja from 'dayjs/locale/ja';
 
+interface Image {
+  url: string;
+  height: number;
+  width: number;
+}
+
+interface Article {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  topImage: Image;
+  title: string;
+  body: string;
+  categories: string[];
+}
+
 const Blog = async ({ params }: { params: { id: string } }) => {
-  const data = await client.get({ endpoint: 'blog', contentId: params.id });
-  console.log(params);
+  const data: Article = await client.get({
+    endpoint: 'blog',
+    contentId: params.id,
+  });
 
   const updatedAt = dayjs(data.updatedAt).locale(ja);
   const formattedUpdatedAt = updatedAt.format('YYYY-MM-DD HH:mm');

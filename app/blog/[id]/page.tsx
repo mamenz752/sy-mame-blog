@@ -1,4 +1,4 @@
-import { client } from '@/libs/client';
+import { client } from '@/app/libs/client';
 import Image from 'next/image';
 import React from 'react';
 import parse from 'html-react-parser';

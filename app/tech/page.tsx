@@ -1,4 +1,4 @@
-import { client } from '../../libs/client';
+import { client } from '../libs/client';
 import BlogItem from '../components/BlogItem';
 
 interface Image {

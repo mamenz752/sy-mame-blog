@@ -17,7 +17,7 @@ const Header = () => {
           </p>
         </div>
       </div>
-      <nav className="my-8">
+      <nav className="my-6">
         <ul className="py-4 flex items-center justify-around bg-black text-white tracking-widest">
           <li>
             <Link href="/" className="hover:text-gray-300">
@@ -25,22 +25,22 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="/env" className="hover:text-gray-300">
               PC・周辺機器
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="/tech" className="hover:text-gray-300">
               Web技術関連
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="ds" className="hover:text-gray-300">
               DS・ML・業務効率化
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="talk" className="hover:text-gray-300">
               雑談
             </Link>
           </li>

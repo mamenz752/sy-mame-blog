@@ -9,12 +9,10 @@ type Props = {
 
 const BlogItem: FC<Props> = async (props: Props) => {
   const data = await client.get({ endpoint: 'blog', contentId: props.id });
-  const article = data.contents;
-  console.log(data);
 
   return (
     <li>
-      <Link href="/" className="hover:opacity-50">
+      <Link href={`blog/${data.id}`} className="hover:opacity-50">
         <div className="border border-gray-500">
           <Image
             src={data.topImage.url}

@@ -7,9 +7,10 @@ import ja from 'dayjs/locale/ja';
 
 const Blog = async ({ params }: { params: { id: string } }) => {
   const data = await client.get({ endpoint: 'blog', contentId: params.id });
+  console.log(params);
 
-  const updatedAt = dayjs(data.updatedAt).locale('ja');
-  const formatedUpdatedAt = updatedAt.format('YYYY-MM-DD HH:mm');
+  const updatedAt = dayjs(data.updatedAt).locale(ja);
+  const formattedUpdatedAt = updatedAt.format('YYYY-MM-DD HH:mm');
 
   return (
     <main className="my-12">
@@ -22,7 +23,7 @@ const Blog = async ({ params }: { params: { id: string } }) => {
           className="mx-auto"
         />
       </div>
-      <p className="text-right text-gray-500 my-4">{formatedUpdatedAt}</p>
+      <p className="text-right text-gray-500 my-4">{formattedUpdatedAt}</p>
       <h2 className="h-12 my-4 font-bold text-2xl">{data.title}</h2>
       <div className="text-right">
         <p className="inline-block text-sm tracking-wider bg-black text-white mt-2 p-4">

@@ -30,17 +30,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="/tech" className="hover:text-gray-300">
               Web技術関連
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="ds" className="hover:text-gray-300">
               DS・ML・業務効率化
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-gray-300">
+            <Link href="talk" className="hover:text-gray-300">
               雑談
             </Link>
           </li>

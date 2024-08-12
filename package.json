@@ -7,15 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "lint:fix": "eslint **/*.{js,jsx,ts,tsx} --fix",
     "format": "prettier --write .",
     "prepare": "husky"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "dayjs": "^1.11.12",
+    "html-react-parser": "^5.1.12",
+    "microcms-js-sdk": "^3.1.2",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sass": "^1.77.8"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -35,7 +39,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint app/**/*.{ts,tsx} --fix",
+      "eslint **/*.{js,jsx,ts,tsx} --fix",
       "prettier --write '**/*.{ts,tsx}'"
     ]
   }

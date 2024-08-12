@@ -1,33 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.api-article {
+    line-height: 1.8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.api-article h1 {
+    margin: 2rem 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Zen Kaku Gothic New';
+    font-weight: bold;
+    background-color: #d9d9d9;
+    border-left: 10px black solid;
+    letter-spacing: 0.05em;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+.api-article h2 {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Zen Kaku Gothic New';
+    letter-spacing: 0.05em;
+    border-bottom: solid 1px black;
+	margin-bottom: 4px;
+	position: relative;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.api-article h2:before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    border-bottom: solid 1px;
+    position: absolute;
+    left: 0px;
+    bottom: -5px;
+}
+
+.api-article h3 {
+    font-weight: medium;
+    font-size: 1.2rem;
+}
+
+.api-article p {
+    margin: 1rem 0;
+    letter-spacing: 0.05em;
+}
+
+.api-article ul {
+    margin: 1.5rem 0;
+    border: 4px #d9d9d9 dotted;
+    padding: 1.5rem;
+}
+
+.api-article li {
+    margin-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.api-article a {
+    color: gray;
+    text-decoration: underline;
 }

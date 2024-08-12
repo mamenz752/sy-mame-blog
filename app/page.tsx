@@ -1,7 +1,16 @@
-export default function Home() {
+import { client } from '../libs/client';
+import BlogItem from './components/BlogItem';
+
+export default async function Home(): Promise<JSX.Element> {
+  const articles = await client.getAllContentIds({ endpoint: 'blog' });
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>sy-mame-blog</h1>
+    <main className="py-8">
+      <ul className="grid grid-cols-3 gap-6">
+        {articles.map((article: string, item: number) => (
+          <BlogItem key={item} id={article} />
+        ))}
+      </ul>
     </main>
   );
 }

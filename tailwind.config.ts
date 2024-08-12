@@ -13,6 +13,10 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        'noto-jp': 'Noto Sans JP',
+        'zen-kaku': 'Zen Kaku Gothic New',
+      },
     },
   },
   plugins: [],

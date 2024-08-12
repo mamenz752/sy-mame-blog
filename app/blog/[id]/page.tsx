@@ -8,7 +8,7 @@ import ja from 'dayjs/locale/ja';
 const Blog = async ({ params }: { params: { id: string } }) => {
   const data = await client.get({ endpoint: 'blog', contentId: params.id });
 
-  const updatedAt = dayjs(data.updatedAt).locale(ja);
+  const updatedAt = dayjs(data.updatedAt).locale('ja');
   const formatedUpdatedAt = updatedAt.format('YYYY-MM-DD HH:mm');
 
   return (

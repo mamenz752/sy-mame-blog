@@ -1,8 +1,6 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { client } from './libs/client';
 import BlogItem from './components/BlogItem';
+import { useQuery } from '@tanstack/react-query';
 
 interface Image {
   url: string;
@@ -22,16 +20,10 @@ interface Article {
   categories: string[];
 }
 
-export default function Home() {
-  const [articles, setArticles] = useState<Article[]>([]);
+export const dynamic = 'force-static';
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const data: Article[] = await client.getAllContents({ endpoint: 'blog' });
-      setArticles(data);
-    };
-    fetchArticles();
-  }, []);
+export default async function Home() {
+  const articles = await client.getAllContents({ endpoint: 'blog' });
 
   return (
     <main className="py-8">

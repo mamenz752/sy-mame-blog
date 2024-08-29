@@ -23,6 +23,8 @@ interface Article {
   categories: string[];
 }
 
+export const dynamic = 'force-static';
+
 const Blog = async ({ params }: { params: { id: string } }) => {
   const data: Article = await client.get({
     endpoint: 'blog',

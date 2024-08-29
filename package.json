@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.51.23",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "dayjs": "^1.11.12",
     "html-react-parser": "^5.1.12",

@@ -19,6 +19,8 @@ interface Article {
   categories: string[];
 }
 
+export const dynamic = 'force-static';
+
 export default async function Home() {
   const data = await client.getAllContents({ endpoint: 'blog' });
   const filteredData = data.filter((item: Article, i) =>
@@ -32,7 +34,18 @@ export default async function Home() {
       </h2>
       <ul className="grid grid-cols-3 gap-6">
         {filteredData.map((item: Article, i) => (
-          <BlogItem key={i} id={item.id} />
+          <BlogItem
+            key={item.id}
+            id={item.id}
+            createdAt={item.createdAt}
+            updatedAt={item.updatedAt}
+            publishedAt={item.publishedAt}
+            revisedAt={item.revisedAt}
+            topImage={item.topImage}
+            title={item.title}
+            body={item.body}
+            categories={item.categories}
+          />
         ))}
       </ul>
     </main>

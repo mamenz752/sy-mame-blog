@@ -1,6 +1,6 @@
-import { client } from './libs/client';
+'use client';
 import BlogItem from './components/BlogItem';
-import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 
 interface Image {
   url: string;
@@ -22,10 +22,35 @@ interface Article {
 
 export const dynamic = 'force-static';
 
-export default async function Home() {
-  const articles = await client.getAllContents({ endpoint: 'blog' });
+export default function Home() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  return (
+  useEffect(() => {
+    setIsLoading(true);
+    fetch('https://sy-mame-blog.microcms.io/api/v1/blog', {
+      headers: {
+        'X-MICROCMS-API-KEY': process.env.NEXT_PUBLIC_API_KEY || '',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('レスポンスが正常ではありませんでした。');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setArticles(data.contents);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log('Error occured:', error));
+  }, []);
+
+  return isLoading === true ? (
+    <div className="py-8">
+      <p>Loading...</p>
+    </div>
+  ) : (
     <main className="py-8">
       <ul className="grid grid-cols-3 gap-6">
         {articles.map((article: Article) => (

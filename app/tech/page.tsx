@@ -21,7 +21,7 @@ interface Article {
 
 export const dynamic = 'force-static';
 
-export default async function Home() {
+export default async function FilteredArticleOfTech() {
   const data = await client.getAllContents({ endpoint: 'blog' });
   const filteredData = data.filter((item: Article, i) =>
     item.categories.some((category) => category === 'Web技術関連'),

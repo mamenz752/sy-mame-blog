@@ -1,5 +1,7 @@
-import { client } from '../libs/client';
+'use client';
+import { equal } from 'assert';
 import BlogItem from '../components/BlogItem';
+import { useEffect, useState } from 'react';
 
 interface Image {
   url: string;
@@ -21,28 +23,55 @@ interface Article {
 
 export const dynamic = 'force-static';
 
-export default async function FilteredArticleOfTalk() {
-  const data = await client.getAllContents({ endpoint: 'blog' });
-  const filteredData = data.filter((item: Article, i) =>
-    item.categories.some((category) => category === '雑談'),
-  );
+export default function FilteredArticleOfTalk() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  return (
+  useEffect(() => {
+    setIsLoading(true);
+    const params = {
+      filters: 'categories[contains]雑談',
+    };
+    const query = new URLSearchParams(params).toString();
+    console.log(query);
+    fetch(`https://sy-mame-blog.microcms.io/api/v1/blog?${query}`, {
+      headers: {
+        'X-MICROCMS-API-KEY': process.env.NEXT_PUBLIC_API_KEY || '',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('レスポンスが正常ではありませんでした。');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setArticles(data.contents);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log('Error occured:', error));
+  }, []);
+
+  return isLoading === true ? (
+    <div className="py-8">
+      <p>Loading...</p>
+    </div>
+  ) : (
     <main className="my-4">
       <h2 className="py-4 font-bold text-xl tracking-wider">雑談の記事一覧</h2>
       <ul className="grid grid-cols-3 gap-6">
-        {filteredData.map((item: Article, i) => (
+        {articles.map((article: Article) => (
           <BlogItem
-            key={item.id}
-            id={item.id}
-            createdAt={item.createdAt}
-            updatedAt={item.updatedAt}
-            publishedAt={item.publishedAt}
-            revisedAt={item.revisedAt}
-            topImage={item.topImage}
-            title={item.title}
-            body={item.body}
-            categories={item.categories}
+            key={article.id}
+            id={article.id}
+            createdAt={article.createdAt}
+            updatedAt={article.updatedAt}
+            publishedAt={article.publishedAt}
+            revisedAt={article.revisedAt}
+            topImage={article.topImage}
+            title={article.title}
+            body={article.body}
+            categories={article.categories}
           />
         ))}
       </ul>

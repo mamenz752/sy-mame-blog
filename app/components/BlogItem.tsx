@@ -35,31 +35,6 @@ type Props = {
 };
 
 const BlogItem: FC<Props> = (props: Props) => {
-  // const [article, setArticle] = useState<Article>({
-  //   id: "",
-  //   createdAt: "",
-  //   updatedAt: "",
-  //   publishedAt: "",
-  //   revisedAt: "",
-  //   topImage: {
-  //     url: "",
-  //     height: NaN,
-  //     width: NaN,
-  //   },
-  //   title: "",
-  //   body: "",
-  //   categories: [""]
-  // });
-
-  // const fetchArticle = async () => {
-  //   const data = await client.get({ endpoint: 'blog', contentId: props.id });
-  //   setArticle(data);
-  // }
-
-  // useEffect(() => {
-  //   fetchArticle();
-  // }, [ props.id ]);
-
   const width = Number(props.topImage.width);
   const height = Number(props.topImage.height);
 
